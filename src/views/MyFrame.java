@@ -9,12 +9,12 @@ package views;
  *
  * @author Scott
  */
-public class MyFram extends javax.swing.JFrame {
+public class MyFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MyFram
      */
-    public MyFram() {
+    public MyFrame() {
         initComponents();
     }
 
@@ -27,12 +27,12 @@ public class MyFram extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jPanel2 = new javax.swing.JPanel();
+        fileNameTextField = new javax.swing.JTextField();
+        editedTextField = new javax.swing.JTextField();
+        textArea = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         newMenuItem = new javax.swing.JMenuItem();
@@ -41,25 +41,20 @@ public class MyFram extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jPanel2.setLayout(new java.awt.BorderLayout());
+        jPanel2.add(fileNameTextField, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        editedTextField.setEnabled(false);
+        editedTextField.setFocusable(false);
+        jPanel2.add(editedTextField, java.awt.BorderLayout.LINE_START);
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField1, java.awt.BorderLayout.CENTER);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        textArea.setViewportView(jTextArea2);
 
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2, java.awt.BorderLayout.PAGE_START);
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(textArea, java.awt.BorderLayout.CENTER);
 
         fileMenu.setText("File");
 
@@ -75,16 +70,12 @@ public class MyFram extends javax.swing.JFrame {
         saveAsMenuItem.setText("Save As");
         fileMenu.add(saveAsMenuItem);
 
-        jMenuBar1.add(fileMenu);
+        menuBar.add(fileMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,35 +94,36 @@ public class MyFram extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MyFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MyFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MyFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MyFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MyFram().setVisible(true);
+                new MyFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField editedTextField;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField fileNameTextField;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newMenuItem;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JScrollPane textArea;
     // End of variables declaration//GEN-END:variables
 }
