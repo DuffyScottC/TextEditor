@@ -33,7 +33,7 @@ public class MyFram extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         newMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
@@ -61,21 +61,21 @@ public class MyFram extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        jMenu1.setText("File");
+        fileMenu.setText("File");
 
         openMenuItem.setText("Open");
-        jMenu1.add(openMenuItem);
+        fileMenu.add(openMenuItem);
 
         newMenuItem.setText("New");
-        jMenu1.add(newMenuItem);
+        fileMenu.add(newMenuItem);
 
         saveMenuItem.setText("Save");
-        jMenu1.add(saveMenuItem);
+        fileMenu.add(saveMenuItem);
 
         saveAsMenuItem.setText("Save As");
-        jMenu1.add(saveAsMenuItem);
+        fileMenu.add(saveAsMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(fileMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -122,7 +122,7 @@ public class MyFram extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
