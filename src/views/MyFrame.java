@@ -5,6 +5,13 @@
  */
 package views;
 
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Scott
@@ -96,4 +103,44 @@ public class MyFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JScrollPane textArea;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getEditedTextField() {
+        return editedTextField;
+    }
+
+    public JMenu getFileMenu() {
+        return fileMenu;
+    }
+
+    public JTextField getFileNameTextField() {
+        return fileNameTextField;
+    }
+
+    public JTextArea getjTextArea2() {
+        return jTextArea2;
+    }
+
+    public JMenuBar getMenuBar() {
+        return menuBar;
+    }
+
+    public JMenuItem getNewMenuItem() {
+        return newMenuItem;
+    }
+
+    public JMenuItem getOpenMenuItem() {
+        return openMenuItem;
+    }
+
+    public JMenuItem getSaveAsMenuItem() {
+        return saveAsMenuItem;
+    }
+
+    public JMenuItem getSaveMenuItem() {
+        return saveMenuItem;
+    }
+
+    public JScrollPane getTextArea() {
+        return textArea;
+    }
 }
