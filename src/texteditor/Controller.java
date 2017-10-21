@@ -26,12 +26,20 @@ public class Controller {
     frame.setLocationRelativeTo(null);
     // you can adjust the size with something like this:
     // frame.setSize(600, 500);
+    JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
     
     JMenuItem openMenuItem = frame.getOpenMenuItem();
     openMenuItem.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+            
+            chooser.setDialogTitle("Open");
+            if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) { //if the user chose a valid file
+                
+                System.out.println(chooser.getSelectedFile().getAbsolutePath());
+                
+            }
+            
         }
     });
 	
