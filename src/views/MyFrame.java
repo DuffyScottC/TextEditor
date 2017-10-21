@@ -120,9 +120,9 @@ public class MyFrame extends javax.swing.JFrame {
         return jTextArea2;
     }
 
-    public JMenuBar getMenuBar() {
-        return menuBar;
-    }
+//    public JMenuBar getMenuBar() {
+//        return menuBar;
+//    }
 
     public JMenuItem getNewMenuItem() {
         return newMenuItem;
