@@ -11,6 +11,10 @@
 
 package texteditor;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import views.MyFrame;
 
 public class Controller {
@@ -22,6 +26,14 @@ public class Controller {
     frame.setLocationRelativeTo(null);
     // you can adjust the size with something like this:
     // frame.setSize(600, 500);
+    
+    JMenuItem openMenuItem = frame.getOpenMenuItem();
+    openMenuItem.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+        }
+    });
 	
     // event handlers
   }
