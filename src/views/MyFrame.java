@@ -42,6 +42,8 @@ public class MyFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new java.awt.BorderLayout());
+
+        fileNameTextField.setEditable(false);
         jPanel2.add(fileNameTextField, java.awt.BorderLayout.CENTER);
 
         editedTextField.setEnabled(false);
@@ -50,6 +52,7 @@ public class MyFrame extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         textArea.setViewportView(jTextArea2);
@@ -65,9 +68,11 @@ public class MyFrame extends javax.swing.JFrame {
         fileMenu.add(newMenuItem);
 
         saveMenuItem.setText("Save");
+        saveMenuItem.setEnabled(false);
         fileMenu.add(saveMenuItem);
 
         saveAsMenuItem.setText("Save As");
+        saveAsMenuItem.setEnabled(false);
         fileMenu.add(saveAsMenuItem);
 
         menuBar.add(fileMenu);
