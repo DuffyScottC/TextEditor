@@ -37,8 +37,8 @@ public class MyFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         fileNameTextField = new javax.swing.JTextField();
         editedTextField = new javax.swing.JTextField();
-        textArea = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -59,12 +59,12 @@ public class MyFrame extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        textArea.setViewportView(jTextArea2);
+        textArea.setEditable(false);
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jScrollPane1.setViewportView(textArea);
 
-        getContentPane().add(textArea, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         fileMenu.setText("File");
 
@@ -95,13 +95,13 @@ public class MyFrame extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JTextField fileNameTextField;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newMenuItem;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
-    private javax.swing.JScrollPane textArea;
+    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 
     public JTextField getEditedTextField() {
@@ -116,8 +116,8 @@ public class MyFrame extends javax.swing.JFrame {
         return fileNameTextField;
     }
 
-    public JTextArea getjTextArea2() {
-        return jTextArea2;
+    public JTextArea getTextArea() {
+        return textArea;
     }
 
 //    public JMenuBar getMenuBar() {
@@ -138,9 +138,5 @@ public class MyFrame extends javax.swing.JFrame {
 
     public JMenuItem getSaveMenuItem() {
         return saveMenuItem;
-    }
-
-    public JScrollPane getTextArea() {
-        return textArea;
     }
 }
