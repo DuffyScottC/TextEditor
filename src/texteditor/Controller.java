@@ -107,6 +107,15 @@ public class Controller {
             }
         });
         
+        saveAsMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                
+                
+            }
+        });
+        
         //add key listenner to text area
         textArea.addKeyListener(new KeyListener() {
             @Override
