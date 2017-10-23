@@ -67,6 +67,9 @@ public class Controller {
                         saveMenuItem.setEnabled(true);
                         saveAsMenuItem.setEnabled(true);
                         
+                        //Also enable the text area for editing
+                        textArea.setEditable(true);
+                        
                     } catch (IOException ex) { //catch any potential errors
                         
                         System.out.println("Unable to read selected file");
