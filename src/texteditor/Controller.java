@@ -71,10 +71,7 @@ public class Controller {
                         textArea.setEditable(true);
                         
                         //put the file name into the fileNameTextField
-                        String pathAsString = path.toString(); //convert the path to a string
-                        String dirOfFile = pathAsString.substring(0, pathAsString.indexOf(path.getFileName().toString()));
-                        System.out.println("dirOfFile: " + dirOfFile);
-                        fileNameTextField.setText("still not done");
+                        fileNameTextField.setText(path.getFileName().toString());
 
                     } catch (IOException ex) { //catch any potential errors
 
