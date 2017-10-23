@@ -27,7 +27,7 @@ import views.MyFrame;
 public class Controller {
 
     private final MyFrame frame = new MyFrame();
-    private File file; //the file that holds the text the user is editing
+    private Path path; //the file that holds the text the user is editing
 
     public Controller() {
         frame.setTitle(getClass().getSimpleName());
@@ -54,7 +54,7 @@ public class Controller {
                     
                     try {
                         //Create a path object from chooser
-                        Path path = chooser.getSelectedFile().toPath();
+                        path = chooser.getSelectedFile().toPath();
                         System.out.println(path); //print the path for debugging purposes
                         //create a string that contains the file body
                         String fileBody = new String(Files.readAllBytes(path));
