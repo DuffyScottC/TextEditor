@@ -93,6 +93,10 @@ public class Controller {
                     
                     Files.write(path, textAreaBody.getBytes()); //save the body of the text area to the path last selected by the user
                     
+                    System.out.println("file saved to" + path);
+                    
+                    editedTextField.setText(""); //remove the * from the edited text field
+                    
                 } catch (IOException ex) {
                     
                     System.out.println("Unable to save file");
