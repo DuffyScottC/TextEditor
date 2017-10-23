@@ -30,6 +30,8 @@ public class Controller {
 
     private final MyFrame frame = new MyFrame();
     private Path path; //the path to the file that holds the text the user is editing
+    private JTextField editedTextField;
+    private JTextArea textArea;
 
     public Controller() {
         frame.setTitle(getClass().getSimpleName());
@@ -42,9 +44,9 @@ public class Controller {
         JMenuItem openMenuItem = frame.getOpenMenuItem();
         JMenuItem saveMenuItem = frame.getSaveMenuItem();
         JMenuItem saveAsMenuItem = frame.getSaveAsMenuItem();
-        JTextArea textArea = frame.getTextArea();
-        JTextField editedTextField = frame.getEditedTextField();
-        editedTextField.setMinimumSize(new Dimension(500,editedTextField.getHeight()));
+        textArea = frame.getTextArea(); //instantiate the class member textArea
+        editedTextField = frame.getEditedTextField(); //instantiate the class member editedTextField
+        editedTextField.setMinimumSize(new Dimension(500, editedTextField.getHeight()));
 
         openMenuItem.addActionListener(new ActionListener() {
             @Override
@@ -53,78 +55,70 @@ public class Controller {
                 //use a file chooser to open the file the user wants
                 chooser.setDialogTitle("Open");
                 if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) { //if the user chose a valid file
-                    
+
                     try {
                         //Create a path object from chooser
                         path = chooser.getSelectedFile().toPath();
                         System.out.println("Openned file from path: " + path); //print the path for debugging purposes
                         //create a string that contains the file body
                         String fileBody = new String(Files.readAllBytes(path));
-                        
+
                         textArea.setText(fileBody); //set the body of the text area to the body of the file
-                        
+
                         //If the user opens a file, then the other two options (save and save as) should be enabled
                         saveMenuItem.setEnabled(true);
                         saveAsMenuItem.setEnabled(true);
-                        
+
                         //Also enable the text area for editing
                         textArea.setEditable(true);
-                        
+
                     } catch (IOException ex) { //catch any potential errors
-                        
+
                         System.out.println("Unable to read selected file");
                         System.err.println(ex);
-                        
+
                     }
 
                 }
 
             }
         });
-        
+
         //save the text to the file the user is editing
         saveMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                try {
-                    
-                    String textAreaBody = textArea.getText(); //get the text stored within the body of the text area
-                    
-                    Files.write(path, textAreaBody.getBytes()); //save the body of the text area to the path last selected by the user
-                    
-                    System.out.println("file saved to: " + path);
-                    
-                    editedTextField.setText(""); //remove the * from the edited text field
-                    
-                } catch (IOException ex) {
-                    
-                    System.out.println("Unable to save file");
-                    System.err.println(ex);
-                    
-                }
-                
+
+                saveFile();
+
             }
         });
-        
+
         saveAsMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                
-                
+
+                chooser.setDialogTitle("Save");
+                int chooserResult = chooser.showSaveDialog(frame); //open the save dialogue and let the user choose where to save the file
+                if (chooserResult == JFileChooser.APPROVE_OPTION) { //if the user successfully saved the file
+
+                    path = chooser.getSelectedFile().toPath(); //get the new path to the file save location
+
+                    saveFile();
+                    
+                }
+
             }
         });
-        
+
         //add key listenner to text area
         textArea.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                
+
                 //first things first, add * to edited area
                 editedTextField.setText("*");
-                
-                
+
             }
 
             @Override
@@ -139,6 +133,28 @@ public class Controller {
         });
 
         // event handlers
+    }
+    
+    /**
+     * Convenience function that saves the text within textArea to the current path (and removes the edited mark)
+     */
+    private void saveFile() {
+        try {
+
+            String textAreaBody = textArea.getText(); //get the text stored within the body of the text area
+
+            Files.write(path, textAreaBody.getBytes()); //save the body of the text area to the path last selected by the user
+
+            System.out.println("file saved to: " + path);
+
+            editedTextField.setText(""); //remove the * from the edited text field
+
+        } catch (IOException ex) {
+
+            System.out.println("Unable to save file");
+            System.err.println(ex);
+
+        }
     }
 
     public static void main(String[] args) {
