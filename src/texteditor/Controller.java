@@ -9,6 +9,7 @@
  */
 package texteditor;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,6 +21,7 @@ import java.nio.file.Path;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import views.MyFrame;
 
 public class Controller {
@@ -39,6 +41,8 @@ public class Controller {
         JMenuItem saveMenuItem = frame.getSaveMenuItem();
         JMenuItem saveAsMenuItem = frame.getSaveAsMenuItem();
         JTextArea textArea = frame.getTextArea();
+        JTextField editedTextField = frame.getEditedTextField();
+        editedTextField.setMinimumSize(new Dimension(500,editedTextField.getHeight()));
 
         openMenuItem.addActionListener(new ActionListener() {
             @Override
@@ -80,17 +84,21 @@ public class Controller {
         textArea.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                
+                //first things first, add * to edited area
+                editedTextField.setText("*");
+                
+                
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                System.out.println("keyPressed");
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                System.out.println("keyReleased");
             }
         });
 

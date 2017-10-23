@@ -53,8 +53,9 @@ public class MyFrame extends javax.swing.JFrame {
         fileNameTextField.setEditable(false);
         jPanel2.add(fileNameTextField, java.awt.BorderLayout.CENTER);
 
-        editedTextField.setEnabled(false);
+        editedTextField.setEditable(false);
         editedTextField.setFocusable(false);
+        editedTextField.setPreferredSize(new java.awt.Dimension(20, 26));
         jPanel2.add(editedTextField, java.awt.BorderLayout.LINE_START);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
