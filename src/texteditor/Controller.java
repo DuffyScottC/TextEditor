@@ -108,14 +108,10 @@ public class Controller {
                     String fileName = path.getFileName().toString(); //the name of the file, including the extension
                     if (!fileName.matches(".*\\.\\w+")) { //if the file name does NOT have an extension, then we need to add a .txt
                         
-                        System.out.println("before:"+path);
-                        
                         //add .txt
                         String fileNameWithExtension = path.getFileName() + ".txt"; //append the .txt extension to the file name
                         //use the resolveSibling method to change the old, extensionless file name to the new filename created above
                         path = path.resolveSibling(fileNameWithExtension); //e.g. this will replace "curdir/sample2" with "curdir/sample2.txt"
-                        
-                        System.out.println("after:"+path);
                         
                     }
                     
