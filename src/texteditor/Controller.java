@@ -116,6 +116,9 @@ public class Controller {
                         
                     }
                     
+                    //put the file name into the fileNameTextField
+                    fileNameTextField.setText(path.getFileName().toString());
+                    
                     saveFile(); //save the file
                     
                 }
