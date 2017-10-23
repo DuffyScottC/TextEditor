@@ -14,12 +14,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
@@ -39,11 +36,12 @@ public class Controller {
         // you can adjust the size with something like this:
         // frame.setSize(600, 500);
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-
+        
         //Get the varius graphical elements
         JMenuItem openMenuItem = frame.getOpenMenuItem();
         JMenuItem saveMenuItem = frame.getSaveMenuItem();
         JMenuItem saveAsMenuItem = frame.getSaveAsMenuItem();
+        JTextField fileNameTextField = frame.getFileNameTextField();
         textArea = frame.getTextArea(); //instantiate the class member textArea
         editedTextField = frame.getEditedTextField(); //instantiate the class member editedTextField
         editedTextField.setMinimumSize(new Dimension(500, editedTextField.getHeight()));
@@ -71,6 +69,12 @@ public class Controller {
 
                         //Also enable the text area for editing
                         textArea.setEditable(true);
+                        
+                        //put the file name into the fileNameTextField
+                        String pathAsString = path.toString(); //convert the path to a string
+                        String dirOfFile = pathAsString.substring(0, pathAsString.indexOf(path.getFileName().toString()));
+                        System.out.println("dirOfFile: " + dirOfFile);
+                        fileNameTextField.setText("still not done");
 
                     } catch (IOException ex) { //catch any potential errors
 
@@ -167,7 +171,7 @@ public class Controller {
 
         }
     }
-
+    
     public static void main(String[] args) {
         Controller app = new Controller();
         app.frame.setVisible(true);
