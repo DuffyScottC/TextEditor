@@ -52,9 +52,9 @@ public class Controller {
                         System.out.println(path); //print the path for debugging purposes
                         file = path.toFile(); //instantiate the file object
                         
-                        String content = new String(Files.readAllBytes(path)); //this may throw an exception
+                        String fileBody = new String(Files.readAllBytes(path)); //this may throw an exception
                         
-                        
+                        textArea.setText(fileBody); //set the body of the text area to the body of the file
                         
                         //If the user opens a file, then the other two options (save and save as) should be enabled
                         saveMenuItem.setEnabled(true);
