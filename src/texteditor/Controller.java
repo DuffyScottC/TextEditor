@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
@@ -27,7 +29,7 @@ import views.MyFrame;
 public class Controller {
 
     private final MyFrame frame = new MyFrame();
-    private Path path; //the file that holds the text the user is editing
+    private Path path; //the path to the file that holds the text the user is editing
 
     public Controller() {
         frame.setTitle(getClass().getSimpleName());
@@ -77,6 +79,27 @@ public class Controller {
 
                 }
 
+            }
+        });
+        
+        //save the text to the file the user is editing
+        saveMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                try {
+                    
+                    String textAreaBody = textArea.getText(); //get the text stored within the body of the text area
+                    
+                    Files.write(path, textAreaBody.getBytes()); //save the body of the text area to the path last selected by the user
+                    
+                } catch (IOException ex) {
+                    
+                    System.out.println("Unable to save file");
+                    System.err.println(ex);
+                    
+                }
+                
             }
         });
         
