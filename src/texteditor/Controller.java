@@ -57,7 +57,7 @@ public class Controller {
                     try {
                         //Create a path object from chooser
                         path = chooser.getSelectedFile().toPath();
-                        System.out.println(path); //print the path for debugging purposes
+                        System.out.println("Openned file from path: " + path); //print the path for debugging purposes
                         //create a string that contains the file body
                         String fileBody = new String(Files.readAllBytes(path));
                         
@@ -93,7 +93,7 @@ public class Controller {
                     
                     Files.write(path, textAreaBody.getBytes()); //save the body of the text area to the path last selected by the user
                     
-                    System.out.println("file saved to" + path);
+                    System.out.println("file saved to: " + path);
                     
                     editedTextField.setText(""); //remove the * from the edited text field
                     
