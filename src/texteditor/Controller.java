@@ -89,7 +89,7 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                saveFile();
+                saveFile(); //save the file
 
             }
         });
@@ -103,8 +103,19 @@ public class Controller {
                 if (chooserResult == JFileChooser.APPROVE_OPTION) { //if the user successfully saved the file
 
                     path = chooser.getSelectedFile().toPath(); //get the new path to the file save location
-
-                    saveFile();
+                    
+                    //check if the file has an extension already
+                    String fileName = path.getFileName().toString(); //the name of the file, including the extension
+                    if (!fileName.matches(".*\\.\\w+")) { //if the file name does NOT have an extension, then we need to add a .txt
+                        
+                        //add .txt
+                        String fileNameWithExtension = path.getFileName() + ".txt"; //append the .txt extension to the file name
+                        //use the resolveSibling method to change the old, extensionless file name to the new filename created above
+                        path.resolveSibling(fileNameWithExtension); //For example, this will replace "curdir/sample2" with "curdir/sample2.txt"
+                        
+                    }
+                    
+                    saveFile(); //save the file
                     
                 }
 
@@ -140,15 +151,15 @@ public class Controller {
      */
     private void saveFile() {
         try {
-
+            
             String textAreaBody = textArea.getText(); //get the text stored within the body of the text area
-
+            
             Files.write(path, textAreaBody.getBytes()); //save the body of the text area to the path last selected by the user
-
+            
             System.out.println("file saved to: " + path);
-
+            
             editedTextField.setText(""); //remove the * from the edited text field
-
+            
         } catch (IOException ex) {
 
             System.out.println("Unable to save file");
