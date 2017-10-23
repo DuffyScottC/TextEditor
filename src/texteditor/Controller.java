@@ -51,15 +51,8 @@ public class Controller {
                         //Create a path object from chooser
                         Path path = chooser.getSelectedFile().toPath();
                         System.out.println(path); //print the path for debugging purposes
-                        file = path.toFile(); //instantiate the file object
-                        
-                        FileReader fileReader = new FileReader(file); //create a file reader from the file the user selected
-                        char[] characters = new char[(int)file.length()]; //create an array of characters to hold all the characters in the file
-                        fileReader.read(characters); //use the file reader to put all the characters from the file into the characters array
-                        fileReader.close(); //close the file reader, since we don't need it anymore
-                        
-                        //create a string that contains the file body from the characters input from the file
-                        String fileBody = new String(characters);
+                        //create a string that contains the file body
+                        String fileBody = new String(Files.readAllBytes(path));
                         
                         textArea.setText(fileBody); //set the body of the text area to the body of the file
                         
