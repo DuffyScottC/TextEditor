@@ -120,12 +120,12 @@ public class Controller {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("keyPressed");
+                //System.out.println("keyPressed");
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                System.out.println("keyReleased");
+                //System.out.println("keyReleased");
             }
         });
 
