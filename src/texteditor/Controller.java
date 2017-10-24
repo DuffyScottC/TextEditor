@@ -72,8 +72,13 @@ public class Controller {
                         textArea.setEditable(true);
                         
                         //put the file name into the fileNameTextField
-                        String fileDisplayName = path.relativize(path).toString();
-                        fileNameTextField.setText(fileDisplayName);
+                        
+                        String workingDirStr = System.getProperty("user.dir"); //get the working directory
+                        Path workingDir = Paths.get(workingDirStr); //convert the working directory to a path object
+                        System.out.println(workingDir);
+                        Path relativePath = workingDir.relativize(path); //get the relative path of the file from the working directory
+                        System.out.println(relativePath);
+                        fileNameTextField.setText(relativePath.toString());
 
                     } catch (IOException ex) { //catch any potential errors
 
