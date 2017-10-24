@@ -174,12 +174,12 @@ public class Controller {
                     if (Files.exists(path)) { //if the file already exists
                         
                         //ask the user if they want to continue
-                        if (!shouldContinue("OK to overwrite file?")) { //if the user does not want to overwrite a pre-existing file
+                        if (!shouldContinue("OK to overwrite existing file?")) { //if the user does not want to overwrite a pre-existing file
                             return;
                         }
                         
                         
-                    }
+                    } //if the file does not exist, we don't need to ask if the user wants to overwrite it
                     
                     saveFile(); //save the file
 
