@@ -151,7 +151,7 @@ public class Controller {
                     saveMenuItem.setEnabled(true); //enable the save menu item (if necessary)
                     
                 }
-
+                
             }
         });
 
@@ -161,7 +161,9 @@ public class Controller {
             public void keyTyped(KeyEvent e) {
 
                 //first things first, add * to edited area
-                editedTextField.setText("*");
+                if (textArea.isEditable()) { //if the text area is editable
+                    editedTextField.setText("*"); //show that edits have been made
+                }
 
             }
 
