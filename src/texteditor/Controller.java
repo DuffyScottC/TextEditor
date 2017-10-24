@@ -42,11 +42,21 @@ public class Controller {
         JMenuItem openMenuItem = frame.getOpenMenuItem();
         JMenuItem saveMenuItem = frame.getSaveMenuItem();
         JMenuItem saveAsMenuItem = frame.getSaveAsMenuItem();
+        JMenuItem newMenuItem = frame.getNewMenuItem();
         JTextField fileNameTextField = frame.getFileNameTextField();
         textArea = frame.getTextArea(); //instantiate the class member textArea
         editedTextField = frame.getEditedTextField(); //instantiate the class member editedTextField
         editedTextField.setMinimumSize(new Dimension(500, editedTextField.getHeight()));
-
+        
+        newMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                
+                
+            }
+        });
+        
         openMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
