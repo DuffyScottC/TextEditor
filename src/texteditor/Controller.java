@@ -75,9 +75,7 @@ public class Controller {
                         
                         String workingDirStr = System.getProperty("user.dir"); //get the working directory
                         Path workingDir = Paths.get(workingDirStr); //convert the working directory to a path object
-                        System.out.println(workingDir);
                         Path relativePath = workingDir.relativize(path); //get the relative path of the file from the working directory
-                        System.out.println(relativePath);
                         fileNameTextField.setText(relativePath.toString());
 
                     } catch (IOException ex) { //catch any potential errors
