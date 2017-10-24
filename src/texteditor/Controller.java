@@ -58,11 +58,14 @@ public class Controller {
                 //replace the display name
                 fileNameTextField.setText("<NEW FILE>");
                 
-                //disable the save menu item
+                //disable the save menu item (if neccessary)
                 saveMenuItem.setEnabled(false);
                 
+                //enable the save as menu item (if neccessary)
+                saveAsMenuItem.setEnabled(true);
+                
                 //enable the text area (if neccessary)
-                textArea.setEditable(true); //enable the textArea
+                textArea.setEditable(true); //enable the textArea (if neccessary)
                 
             }
         });
@@ -88,7 +91,7 @@ public class Controller {
                         saveMenuItem.setEnabled(true);
                         saveAsMenuItem.setEnabled(true);
 
-                        textArea.setEditable(true); //enable the textArea
+                        textArea.setEditable(true); //enable the textArea (if neccessary)
                         
                         //put the file name into the fileNameTextField
                         
