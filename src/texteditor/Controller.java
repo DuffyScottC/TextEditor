@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -59,6 +61,10 @@ public class Controller {
                     return;
                 }
                 
+                //these next two are neccessary for if the user does not save and then opens a new file
+                editedTextField.setText(""); //remove the edited mark
+                modified = false; //uncheck the modified tag
+                
                 //clear the text from the textArea
                 textArea.setText("");
 
@@ -80,11 +86,15 @@ public class Controller {
         openMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 if (!shouldContinue()) { //if the user does not want to continue
                     return;
                 }
                 
+                //these next two are neccessary for if the user does not save and then opens a file
+                editedTextField.setText(""); //remove the edited mark
+                modified = false; //uncheck the modified tag
+
                 //use a file chooser to open the file the user wants
                 chooser.setDialogTitle("Open");
                 if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) { //if the user chose a valid file
@@ -193,16 +203,28 @@ public class Controller {
             }
         });
 
-        // event handlers
+        frame.addWindowListener(new WindowAdapter() {
+            
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (!shouldContinue()) { //if the user does not want to close the window without saving
+                    return; //stop clising the window
+                } else { //if the user does want to close the window
+                    super.windowClosing(e); //call the super method to close the window
+                }
+            }
+            
+        });
+
     }
-    
+
     /**
-     * Convenience method that asks a user if they want to continue if they try to 
-     * 1) open a file without saving
-     * 2) create a new file without saving
-     * 3) close the program without saving
-     * 
-     * @return true if the process should continue, false if you should return out of the method
+     * Convenience method that asks a user if they want to continue if they try
+     * to 1) open a file without saving 2) create a new file without saving 3)
+     * close the program without saving
+     *
+     * @return true if the process should continue, false if you should return
+     * out of the method
      */
     private boolean shouldContinue() {
         if (modified) { //if the file has been modified, but not saved
@@ -212,14 +234,13 @@ public class Controller {
             if (selection != JOptionPane.YES_OPTION) { //if the user did not choose "yes"
                 return false; //cancel the operation
             }
-            
-            //if the user did choose yes, then we should continue the operation
 
-        } 
-        
+            //if the user did choose yes, then we should continue the operation
+        }
+
         //if the file has been saved, then we can just return true
         return true;
-        
+
     }
 
     /**
