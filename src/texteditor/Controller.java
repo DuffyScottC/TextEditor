@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -38,6 +39,7 @@ public class Controller {
     public Controller() {
         frame.setTitle(getClass().getSimpleName());
         frame.setLocationRelativeTo(null);
+//        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //this is neccessary to prevent the user from closing without saving
         // you can adjust the size with something like this:
         // frame.setSize(600, 500);
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
