@@ -62,7 +62,7 @@ public class Controller {
                 saveMenuItem.setEnabled(false);
                 
                 //enable the text area (if neccessary)
-                allowTextAreaEdits();
+                textArea.setEditable(true); //enable the textArea
                 
             }
         });
@@ -88,7 +88,7 @@ public class Controller {
                         saveMenuItem.setEnabled(true);
                         saveAsMenuItem.setEnabled(true);
 
-                        allowTextAreaEdits();
+                        textArea.setEditable(true); //enable the textArea
                         
                         //put the file name into the fileNameTextField
                         
@@ -172,16 +172,6 @@ public class Controller {
         });
 
         // event handlers
-    }
-    
-    private void allowTextAreaEdits() {
-        
-        if (!textArea.isEditable()) { //if the textArea is NOT enabled
-            
-            textArea.setEditable(true); //enable the textArea
-            
-        } //if it's already enabled, then we don't need to do anything
-        
     }
     
     /**
