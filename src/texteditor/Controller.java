@@ -30,6 +30,7 @@ public class Controller {
     private Path path; //the path to the file that holds the text the user is editing
     private JTextField editedTextField;
     private JTextArea textArea;
+    private boolean modified; //marks whether the file is modified so that a dialogue can warn user if unsaved changes
 
     public Controller() {
         frame.setTitle(getClass().getSimpleName());
@@ -47,6 +48,7 @@ public class Controller {
         textArea = frame.getTextArea(); //instantiate the class member textArea
         editedTextField = frame.getEditedTextField(); //instantiate the class member editedTextField
         editedTextField.setMinimumSize(new Dimension(500, editedTextField.getHeight()));
+        modified = false;
         
         newMenuItem.addActionListener(new ActionListener() {
             @Override
@@ -163,6 +165,7 @@ public class Controller {
                 //first things first, add * to edited area
                 if (textArea.isEditable()) { //if the text area is editable
                     editedTextField.setText("*"); //show that edits have been made
+                    modified = true; //mark the file as modified
                 }
 
             }
