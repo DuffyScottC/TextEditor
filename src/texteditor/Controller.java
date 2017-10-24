@@ -52,7 +52,17 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
+                //clear the text from the textArea
+                textArea.setText("");
                 
+                //replace the display name
+                fileNameTextField.setText("<NEW FILE>");
+                
+                //disable the save menu item
+                saveMenuItem.setEnabled(false);
+                
+                //enable the text area (if neccessary)
+                enableTextArea();
                 
             }
         });
@@ -78,8 +88,7 @@ public class Controller {
                         saveMenuItem.setEnabled(true);
                         saveAsMenuItem.setEnabled(true);
 
-                        //Also enable the text area for editing
-                        textArea.setEditable(true);
+                        enableTextArea();
                         
                         //put the file name into the fileNameTextField
                         
@@ -163,6 +172,16 @@ public class Controller {
         });
 
         // event handlers
+    }
+    
+    private void enableTextArea() {
+        
+        if (!textArea.isEnabled()) { //if the textArea is NOT enabled
+            
+            textArea.setEditable(true); //enable the textArea
+            
+        } //if it's already enabled, then we don't need to do anything
+        
     }
     
     /**
