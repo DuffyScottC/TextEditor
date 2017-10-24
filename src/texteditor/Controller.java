@@ -148,6 +148,8 @@ public class Controller {
                     
                     saveFile(); //save the file
                     
+                    saveMenuItem.setEnabled(true); //enable the save menu item (if necessary)
+                    
                 }
 
             }
