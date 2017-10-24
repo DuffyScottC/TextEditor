@@ -72,27 +72,8 @@ public class Controller {
                         textArea.setEditable(true);
                         
                         //put the file name into the fileNameTextField
-                        Path workingDir = Paths.get(System.getProperty("user.dir")); //form a path from the working directory
-                        if (path.startsWith(workingDir)) { //if the working directory is a parent of the file path
-                            if (path.getNameCount() > workingDir.getNameCount() + 1) { //if the path to the file is at least one directory deeper than the working directory
-                                
-                                String wDirStr = workingDir.toString(); //convert the working directory to string
-                                String pStr = path.toString(); //convert the path to string
-                                //remove the working directory from the path to the file
-                                String fileDisplayName = pStr.substring(wDirStr.length(), pStr.length()-1); //substring of path from last index of working directory to the end of the path (including the file)
-                                fileNameTextField.setText(fileDisplayName); //set the display name
-                                
-                            } else { //If the path to the file is NOT at least one directory deeper than the working directory
-                                
-                                fileNameTextField.setText(path.getFileName().toString()); //use just the file name as the display name
-                                
-                            }
-                            
-                        } else { //if the working directory is not a parent of the file path
-                            
-                            fileNameTextField.setText(path.toString()); //use the whole file name as the display name
-                            
-                        }
+                        String fileDisplayName = path.relativize(path).toString();
+                        fileNameTextField.setText(fileDisplayName);
 
                     } catch (IOException ex) { //catch any potential errors
 
