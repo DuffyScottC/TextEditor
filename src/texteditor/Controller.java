@@ -39,7 +39,7 @@ public class Controller {
     public Controller() {
         frame.setTitle(getClass().getSimpleName());
         frame.setLocationRelativeTo(null);
-//        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //this is neccessary to prevent the user from closing without saving
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //this is neccessary to prevent the user from closing without saving
         // you can adjust the size with something like this:
         // frame.setSize(600, 500);
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
@@ -219,11 +219,11 @@ public class Controller {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                if (modified) {
+                if (modified) { //if the user tried to close without saving
                     if (!shouldContinue("OK to discard changes?")) { //if the user does not want to close the window without saving
-                        return; //stop clising the window
+                        System.out.println("Do not close the window.");
                     } else { //if the user does want to close the window
-                        super.windowClosing(e); //call the super method to close the window
+                        frame.dispose(); //the window should close
                     }
                 }
             }
