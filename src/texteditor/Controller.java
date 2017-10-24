@@ -61,7 +61,7 @@ public class Controller {
                     return;
                 }
                 
-                //these next two are neccessary for if the user does not save and then opens a new file
+                //these next two are neccessary for if the user does not save and then creates a new file
                 editedTextField.setText(""); //remove the edited mark
                 modified = false; //uncheck the modified tag
                 
@@ -229,7 +229,7 @@ public class Controller {
     private boolean shouldContinue() {
         if (modified) { //if the file has been modified, but not saved
 
-            int selection = JOptionPane.showConfirmDialog(frame, "OK to overwrite existing file?"); //ask the user if they want to continue
+            int selection = JOptionPane.showConfirmDialog(frame, "OK to discard changes?"); //ask the user if they want to continue
 
             if (selection != JOptionPane.YES_OPTION) { //if the user did not choose "yes"
                 return false; //cancel the operation
