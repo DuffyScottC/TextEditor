@@ -120,6 +120,8 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
 
                 saveFile(); //save the file
+                
+                modified = false; //the file is no longer modified
 
             }
         });
@@ -149,6 +151,8 @@ public class Controller {
                     fileNameTextField.setText(path.getFileName().toString());
                     
                     saveFile(); //save the file
+                    
+                    modified = false; //the file is no longer modified
                     
                     saveMenuItem.setEnabled(true); //enable the save menu item (if necessary)
                     
