@@ -90,12 +90,7 @@ public class Controller {
                             
                         } else { //if the working directory is not a parent of the file path
                             
-                            fileNameTextField.setText(path); //use the whole file name as the display name
-                            
-                        }
-                        
-                        fileNameTextField.setText(path.getFileName().toString());
-                        if () { //if the working directory is a parent path of the subdirectory
+                            fileNameTextField.setText(path.toString()); //use the whole file name as the display name
                             
                         }
 
