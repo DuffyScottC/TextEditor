@@ -58,15 +58,16 @@ public class Controller {
         newMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (!shouldContinue()) { //if the user does not want to continue
-                    return;
+                if (modified) { //if the file has not been saved
+                    if (!shouldContinue("OK to discard changes?")) { //if the user does not want to continue
+                        return;
+                    }
                 }
-                
+
                 //these next two are neccessary for if the user does not save and then creates a new file
                 editedTextField.setText(""); //remove the edited mark
                 modified = false; //uncheck the modified tag
-                
+
                 //clear the text from the textArea
                 textArea.setText("");
 
@@ -88,11 +89,12 @@ public class Controller {
         openMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (!shouldContinue("OK to discard changes?")) { //if the user does not want to continue
-                    return;
+                if (modified) { //if the file has not been saved
+                    if (!shouldContinue("OK to discard changes?")) { //if the user does not want to continue
+                        return;
+                    }
                 }
-                
+
                 //these next two are neccessary for if the user does not save and then opens a file
                 editedTextField.setText(""); //remove the edited mark
                 modified = false; //uncheck the modified tag
@@ -149,7 +151,7 @@ public class Controller {
         saveAsMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 chooser.setDialogTitle("Save");
                 int chooserResult = chooser.showSaveDialog(frame); //open the save dialogue and let the user choose where to save the file
                 if (chooserResult == JFileChooser.APPROVE_OPTION) { //if the user successfully saved the file
@@ -169,18 +171,15 @@ public class Controller {
 
                     //put the file name into the fileNameTextField
                     fileNameTextField.setText(path.getFileName().toString());
-                    
+
                     //check if the file already exists
                     if (Files.exists(path)) { //if the file already exists
-                        
                         //ask the user if they want to continue
                         if (!shouldContinue("OK to overwrite existing file?")) { //if the user does not want to overwrite a pre-existing file
                             return;
                         }
-                        
-                        
                     } //if the file does not exist, we don't need to ask if the user wants to overwrite it
-                    
+
                     saveFile(); //save the file
 
                     modified = false; //the file is no longer modified
@@ -217,16 +216,18 @@ public class Controller {
         });
 
         frame.addWindowListener(new WindowAdapter() {
-            
+
             @Override
             public void windowClosing(WindowEvent e) {
-                if (!shouldContinue("OK to discard changes?")) { //if the user does not want to close the window without saving
-                    return; //stop clising the window
-                } else { //if the user does want to close the window
-                    super.windowClosing(e); //call the super method to close the window
+                if (modified) {
+                    if (!shouldContinue("OK to discard changes?")) { //if the user does not want to close the window without saving
+                        return; //stop clising the window
+                    } else { //if the user does want to close the window
+                        super.windowClosing(e); //call the super method to close the window
+                    }
                 }
             }
-            
+
         });
 
     }
@@ -240,17 +241,13 @@ public class Controller {
      * out of the method
      */
     private boolean shouldContinue(String message) {
-        if (modified) { //if the file has been modified, but not saved
+        int selection = JOptionPane.showConfirmDialog(frame, message); //ask the user if they want to continue
 
-            int selection = JOptionPane.showConfirmDialog(frame, message); //ask the user if they want to continue
-
-            if (selection != JOptionPane.YES_OPTION) { //if the user did not choose "yes"
-                return false; //cancel the operation
-            }
-
-            //if the user did choose yes, then we should continue the operation
+        if (selection != JOptionPane.YES_OPTION) { //if the user did not choose "yes"
+            return false; //cancel the operation
         }
 
+        //if the user did choose yes, then we should continue the operation
         //if the file has been saved, then we can just return true
         return true;
 
