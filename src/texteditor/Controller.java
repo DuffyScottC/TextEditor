@@ -41,7 +41,7 @@ public class Controller {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //this is neccessary to prevent the user from closing without saving
         // you can adjust the size with something like this:
-        // frame.setSize(600, 500);
+        frame.setSize(600, 500);
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
 
         //Get the varius graphical elements
