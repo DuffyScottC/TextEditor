@@ -225,6 +225,8 @@ public class Controller {
                     } else { //if the user does want to close the window
                         frame.dispose(); //the window should close
                     }
+                } else { //if the user has closed the program after saving
+                    frame.dispose(); //the window should close
                 }
             }
 
