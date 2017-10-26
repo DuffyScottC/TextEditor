@@ -168,7 +168,7 @@ public class Controller {
                     }
 
                     //put the file name into the fileNameTextField
-                    fileNameTextField.setText(path.getFileName().toString());
+                    setDisplayName();
 
                     //check if the file already exists
                     if (Files.exists(path)) { //if the file already exists
