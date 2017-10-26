@@ -34,6 +34,7 @@ public class Controller {
     private Path path; //the path to the file that holds the text the user is editing
     private JTextField editedTextField;
     private JTextArea textArea;
+    private JTextField fileNameTextField;
     private boolean modified; //marks whether the file is modified so that a dialogue can warn user if unsaved changes
 
     public Controller() {
@@ -43,18 +44,18 @@ public class Controller {
         // you can adjust the size with something like this:
         frame.setSize(600, 500);
         JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
-
+        
         //Get the varius graphical elements
         JMenuItem openMenuItem = frame.getOpenMenuItem();
         JMenuItem saveMenuItem = frame.getSaveMenuItem();
         JMenuItem saveAsMenuItem = frame.getSaveAsMenuItem();
         JMenuItem newMenuItem = frame.getNewMenuItem();
-        JTextField fileNameTextField = frame.getFileNameTextField();
+        fileNameTextField = frame.getFileNameTextField();
         textArea = frame.getTextArea(); //instantiate the class member textArea
         editedTextField = frame.getEditedTextField(); //instantiate the class member editedTextField
         editedTextField.setMinimumSize(new Dimension(500, editedTextField.getHeight()));
         modified = false;
-
+        
         newMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,10 +120,7 @@ public class Controller {
                         textArea.setEditable(true); //enable the textArea (if neccessary)
 
                         //put the file name into the fileNameTextField
-                        String workingDirStr = System.getProperty("user.dir"); //get the working directory
-                        Path workingDir = Paths.get(workingDirStr); //convert the working directory to a path object
-                        Path relativePath = workingDir.relativize(path); //get the relative path of the file from the working directory
-                        fileNameTextField.setText(relativePath.toString());
+                        setDisplayName();
 
                     } catch (IOException ex) { //catch any potential errors
 
@@ -232,6 +230,15 @@ public class Controller {
 
         });
 
+    }
+    
+    private void setDisplayName() {
+        
+        String workingDirStr = System.getProperty("user.dir"); //get the working directory
+        Path workingDir = Paths.get(workingDirStr); //convert the working directory to a path object
+        Path relativePath = workingDir.relativize(path); //get the relative path of the file from the working directory
+        fileNameTextField.setText(relativePath.toString());
+        
     }
 
     /**
