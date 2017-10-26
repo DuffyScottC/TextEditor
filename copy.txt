@@ -1,4 +1,2 @@
-this file is in the
-working directory
-at top level
-----XYZ -- and more
+I am making a new
+file.

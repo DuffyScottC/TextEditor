@@ -221,10 +221,10 @@ public class Controller {
                     if (!shouldContinue("OK to discard changes?")) { //if the user does not want to close the window without saving
                         System.out.println("Do not close the window.");
                     } else { //if the user does want to close the window
-                        System.exit(0);//frame.dispose(); //the window should close
+                        System.exit(0); //the window should close
                     }
                 } else { //if the user has closed the program after saving
-                    System.exit(0);//frame.dispose(); //the window should close
+                    System.exit(0); //the window should close
                 }
             }
 
