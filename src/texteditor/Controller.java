@@ -167,9 +167,6 @@ public class Controller {
 
                     }
 
-                    //put the file name into the fileNameTextField
-                    setDisplayName();
-
                     //check if the file already exists
                     if (Files.exists(path)) { //if the file already exists
                         //ask the user if they want to continue
@@ -178,6 +175,9 @@ public class Controller {
                         }
                     } //if the file does not exist, we don't need to ask if the user wants to overwrite it
 
+                    //put the file name into the fileNameTextField
+                    setDisplayName();
+                    
                     saveFile(); //save the file
 
                     modified = false; //the file is no longer modified
