@@ -5,7 +5,7 @@
  */
 /**
  *
- * @author Scott
+ * @author Scott Duffy
  */
 package texteditor;
 

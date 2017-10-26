@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Scott
+ * @author Scott Duffy
  */
 public class MyFrame extends javax.swing.JFrame {
 
